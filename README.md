@@ -75,7 +75,7 @@ You can log in to Mixpost at `/mixpost` using the user account you created.
 
 ## Server configuration
 
-**Please do not skip the server setup step as it is important for Mixpost to work well.**
+**Please do not skip the server configuration step as it is important for Mixpost to work well.**
 
 ### Installing FFmpeg
 
@@ -85,7 +85,7 @@ FFmpeg installed on your server.
 You need to follow FFmpeg installation instructions on their [official website](https://ffmpeg.org/download.html).
 
 ### Installing Supervisor
-You need to configure a process monitor with Supervisor. To install Supervisor on Ubuntu, you may use the following command: 
+You need to configure a process monitor. To install Supervisor on Ubuntu, you may use the following command: 
 
 ```bash
 sudo apt-get install supervisor
@@ -93,7 +93,9 @@ sudo apt-get install supervisor
 
 ### Configuring Supervisor
 
-Supervisor configuration files are typically stored in the `/etc/supervisor/conf.d`. Create the file `mixpost-horizon.conf` inside of `conf.d` folder and put this configuration content:
+Supervisor configuration files are typically stored in the `/etc/supervisor/conf.d`. 
+
+Create the file `mixpost-horizon.conf` inside of `conf.d` folder and put this configuration content:
 
 ```bash
 [program:mixpost_horizon]
@@ -107,7 +109,7 @@ stdout_logfile=/path-to-your-project/storage/logs/horizon.log
 stopwaitsecs=3600
 ```
 
-### Cron Setup
-Don't forget to add a cron that running the scheduler:
+### Cron
+Add a cron that running the scheduler:
 
 `* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1`
