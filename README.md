@@ -16,7 +16,7 @@ Join our community:
 - [Discord](https://discord.gg/5YdseZnK2Z)
 - [Facebook Private Group](https://www.facebook.com/groups/inovector)
 
-# About Mixpost Lite
+## About Mixpost Lite
 
 Mixpost Lite is the free version of Mixpost.
 
@@ -46,6 +46,12 @@ Install Mixpost Lite with composer:
 composer create-project inovector/MixpostApp
 ```
 
+### Configure the app url
+
+You will need to modify the value of the APP_URL in the `.env` file to your project URL.
+
+For example: `APP_URL=https://your-domain.com`
+
 ### Configure the database
 
 You will need to modify the values of the DB_* entries in the `.env` file to make sure they are aligned with your database.
@@ -64,12 +70,30 @@ After that you can create an initial user by executing:
 php artisan mixpost-auth:create
 ```
 
-You can use the user you created to log in to Mixpost at `/mixpost`.
+You can log in to Mixpost at `/mixpost` using the user account you created.
 
 
 ## Server configuration
 
-You need to create a supervisor configuration:
+**Please do not skip the server setup step as it is important for Mixpost to work well.**
+
+### Installing FFmpeg
+
+Mixpost has the ability to generate images from video while uploading a video file. This would not be possible without
+FFmpeg installed on your server.
+
+You need to follow FFmpeg installation instructions on their [official website](https://ffmpeg.org/download.html).
+
+### Installing Supervisor
+You need to configure a process monitor with Supervisor. To install Supervisor on Ubuntu, you may use the following command: 
+
+```bash
+sudo apt-get install supervisor
+```
+
+### Configuring Supervisor
+
+Supervisor configuration files are typically stored in the `/etc/supervisor/conf.d`. Create the file `mixpost-horizon.conf` inside of `conf.d` folder and put this configuration content:
 
 ```bash
 [program:mixpost_horizon]
@@ -83,13 +107,7 @@ stdout_logfile=/path-to-your-project/storage/logs/horizon.log
 stopwaitsecs=3600
 ```
 
+### Cron Setup
 Don't forget to add a cron that running the scheduler:
 
 `* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1`
-
-### Installation of FFmpeg
-
-Mixpost has the ability to generate images from video while uploading a video file. This would not be possible without
-FFmpeg installed on your server.
-
-You need to follow FFmpeg installation instructions on their [official website](https://ffmpeg.org/download.html).
