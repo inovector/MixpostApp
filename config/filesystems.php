@@ -56,6 +56,14 @@ return [
             'throw' => false,
         ],
 
+        'mixpost' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/mixpost'),
+            'url' => env('APP_URL').'/storage/mixpost',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
     ],
 
     /*
