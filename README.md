@@ -7,21 +7,31 @@
 
 # Welcome to Mixpost
 
-Mixpost is a Self-hosted social media management software.
+Mixpost it's the coolest Self-hosted social media management software. 
 
-This is the standalone application with the [Mixpost Lite package](https://github.com/inovector/mixpost) pre-installed and configured.
-
-**Mixpost Pro is under development and will be released soon. Sign up to be notified when it's
-released [mixpost.app](https://mixpost.app/)**
+Easily create, schedule, publish, and manage social media content in one place, with no limits or monthly subscription fees. More details on [mixpost.app](https://mixpost.app/).
 
 Join our community:
 
 - [Discord](https://discord.gg/5YdseZnK2Z)
 - [Facebook Private Group](https://www.facebook.com/groups/inovector)
 
+# About Mixpost Lite
+
+Mixpost Lite is the free version of Mixpost.
+
+This repository is the standalone application with the [Laravel Package of Mixpost Lite](https://github.com/inovector/mixpost) pre-installed and configured.
+
+Mixpost has 3 packages:
+
+- Lite (Personal use only)
+- Pro Team (Business use)
+- Pro SaaS (Launch your own SaaS and start generating revenue)
+
+Do you want a more advanced version? **Mixpost Pro** is under development and will be released soon. Sign up to be notified when it's released [mixpost.app](https://mixpost.app/).
+
 ## Requirements
 
-* Laravel Framework [^9.0, ^10.0]
 * PHP 8.1 or higher
 * Database (eg: MySQL, PostgresSQL, SQLite)
 * Redis 6.2 or higher
@@ -30,7 +40,7 @@ Join our community:
 
 ## Installation
 
-You may use Composer to install Mixpost:
+Install Mixpost Lite with composer:
 
 ```bash
 composer create-project inovector/MixpostApp

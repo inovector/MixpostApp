@@ -1,9 +1,8 @@
 {
     "name": "inovector/mixpostapp",
     "type": "project",
-    "description": "Standalone application with the Mixpost Lite package pre-installed and configured",
-    "keywords": ["mixpost", "lite", "inovector"],
-    "license": "MIT",
+    "description": "Standalone application with the Laravel Package of Mixpost Lite pre-installed and configured",
+    "keywords": ["mixpost", "mixpost-lite", "inovector"],
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
@@ -48,6 +47,8 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi",
+            "@php artisan mixpost:setup-gitignore",
+            "@php artisan mixpost:publish",
             "@php artisan storage:link"
         ]
     },
