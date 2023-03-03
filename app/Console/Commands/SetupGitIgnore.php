@@ -21,6 +21,8 @@ class SetupGitIgnore extends Command
             ->reject(fn (string $line) => Str::startsWith($line, 'public/vendor/mixpost'))
             ->reject(fn (string $line) => Str::startsWith($line, 'public/vendor/mixpost-auth'))
             ->reject(fn (string $line) => Str::startsWith($line, 'public/vendor/horizon'))
+            ->reject(fn (string $line) => Str::startsWith($line, 'database/migrations/'))
+            ->reject(fn (string $line) => Str::startsWith($line, '!database/migrations/'))
             ->implode('');
 
         file_put_contents($path, $content);
