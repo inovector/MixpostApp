@@ -134,7 +134,18 @@ See image on [docker hub](https://hub.docker.com/r/inovector/mixpost). There are
 ## Build Docker Image
 You can create a docker image that will have all server configurations and start the containers.
 
-Download the latest version of Mixpost Lite from [here](https://github.com/inovector/MixpostApp/releases), copy .env.example to `.env`, and fill in all the necessary values.
+Download the latest version of Mixpost Lite from [here](https://github.com/inovector/MixpostApp/releases), copy .env.example to `.env`, and fill in all the necessary values:
+```env
+DB_HOST=127.0.0.1
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+```
+
+**Important**: the `DB_HOST` must be `mysql` and `REDIS_HOST` must be `redis`.
 
 *Attention! If you have already installed the project with composer `composer create-project inovector/MixpostApp`, you can avoid step **3** below.*
 
@@ -156,7 +167,6 @@ This binary will help you to avoid the long command `docker-compose exec -it -u 
 ./docker/mixpost php artisan key:generate
 ./docker/mixpost php artisan mixpost:setup-gitignore
 ./docker/mixpost php artisan queue:batches-table
-./docker/mixpost php artisan mixpost:publish
 ./docker/mixpost php artisan storage:link
 ```
 
