@@ -75,7 +75,7 @@ You can log in to Mixpost at `/mixpost` using the user account you created.
 
 ## Server configuration (Manual)
 
-**Please do not skip the server configuration step as it is important for Mixpost to work well.**
+*Please do not skip the server configuration step as it is important for Mixpost to work well.*
 
 ### Installing FFmpeg
 
@@ -83,6 +83,12 @@ Mixpost has the ability to generate images from video while uploading a video fi
 FFmpeg installed on your server.
 
 You need to follow FFmpeg installation instructions on their [official website](https://ffmpeg.org/download.html).
+
+### Installing Redis
+So that the posts can be scheduled, Mixpost puts them in the queue. 
+
+To be able to do this, you need to install [Redis](https://redis.io/). 
+Then, you will need to modify the values of the REDIS_* entries in the `.env` file to make sure they are aligned with your redis instance.
 
 ### Installing Supervisor
 You need to configure a process monitor. To install Supervisor on Ubuntu, you may use the following command: 
@@ -108,6 +114,15 @@ redirect_stderr=true
 stdout_logfile=/path-to-your-project/storage/logs/horizon.log
 stopwaitsecs=3600
 ```
+Once the configuration file has been created, you may update the Supervisor configuration and start the processes using the following commands:
+
+```bash
+sudo supervisorctl reread
+ 
+sudo supervisorctl update
+ 
+sudo supervisorctl start mixpost_horizon:*
+```
 
 ### Cron
 Add a cron that running the scheduler:
@@ -115,6 +130,8 @@ Add a cron that running the scheduler:
 `* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1`
 
 ***
+
+## Docker Installation
 
 <img src="./art/docker.webp" width="200px" alt="Logo Docker" />
 
