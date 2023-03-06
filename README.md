@@ -129,6 +129,40 @@ Add a cron that running the scheduler:
 
 `* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1`
 
+### Other things to consider
+Some files that are uploaded, video for example, can be up to 200 mb, by default most web servers have configured a much smaller limit. You will need to check this.
+
+#### In `php.ini`:
+
+```conf
+post_max_size = 200M
+upload_max_filesize = 200M
+```
+
+Then, restart your php process. For php fpm you can restart with:
+
+```bash
+sudo systemctl restart php8.1-fpm.service
+sudo systemctl reload php8.1-fpm.service 
+```
+
+#### In `nginx.conf`:
+
+```conf
+http {
+    client_max_body_size 200M;
+}
+```
+Then, `sudo systemctl restart nginx`
+
+#### For apache, `/etc/httpd/conf/httpd.conf.`
+
+```conf
+LimitRequestBody 209715200
+```
+
+Then: `sudo systemctl restart httpd`
+
 ***
 
 ## Docker Installation
