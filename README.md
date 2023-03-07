@@ -187,6 +187,10 @@ You can create a docker image that will have all server configurations and start
 
 Download the latest version of Mixpost Lite from [here](https://github.com/inovector/MixpostApp/releases), copy .env.example to `.env`, and fill in all the necessary values:
 ```env
+APP_PORT=80
+UID=1000 // Your local user id, you can find it this way: id -u
+GID=1000 // Your local group id, you can find it this way: id -g
+
 DB_HOST=127.0.0.1
 DB_DATABASE=laravel
 DB_USERNAME=root

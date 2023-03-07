@@ -56,12 +56,14 @@ RUN php -r "unlink('composer-setup.php');"
 RUN delgroup dialout
 
 # Add user for mixpost application
-RUN groupadd -g ${GID} --system mixpost
-RUN useradd -g mixpost --system -N -ms /bin/bash -u ${UID} mixpost
+# RUN groupadd -g ${GID} --system mixpost
+# RUN useradd -g mixpost --system -N -ms /bin/bash -u ${UID} mixpost
 
 # Tell php8.2-fpm to use mixpost user instead of www-data user
-RUN sed -i "s/user = www-data/user = mixpost/g" /etc/php/8.2/fpm/pool.d/www.conf
-RUN sed -i "s/group = www-data/group = mixpost/g" /etc/php/8.2/fpm/pool.d/www.conf
+# RUN sed -i "s/user = www-data/user = mixpost/g" /etc/php/8.2/fpm/pool.d/www.conf
+# RUN sed -i "s/group = www-data/group = mixpost/g" /etc/php/8.2/fpm/pool.d/www.conf
+
+RUN useradd -g www-data,root -G mixpost --system -N -ms /bin/bash -u ${UID} mixpost
 
 EXPOSE 80
 
