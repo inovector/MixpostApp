@@ -239,7 +239,17 @@ This binary will help you to avoid the long command `docker-compose exec -it -u 
 ./docker/mixpost php artisan mixpost:setup-gitignore
 ./docker/mixpost php artisan queue:batches-table
 ./docker/mixpost php artisan storage:link
+./docker/mixpost php artisan queue:restart
 ```
+
+If you are reading for production, you cache the config and routes:
+
+```bash
+./docker/mixpost php artisan config:cache
+./docker/mixpost php artisan route:cache
+```
+
+Do not forget to restart the queue after caching: `./docker/mixpost php artisan queue:restart`
 
 ### 4. And then you can migrate all tables:
 
