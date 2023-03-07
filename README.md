@@ -187,6 +187,10 @@ You can create a docker image that will have all server configurations and start
 
 Download the latest version of Mixpost Lite from [here](https://github.com/inovector/MixpostApp/releases), copy .env.example to `.env`, and fill in all the necessary values:
 ```env
+APP_PORT=80
+UID=1000 // Your local user id, you can find it this way: id -u
+GID=1000 // Your local group id, you can find it this way: id -g
+
 DB_HOST=127.0.0.1
 DB_DATABASE=laravel
 DB_USERNAME=root
@@ -205,6 +209,22 @@ REDIS_PASSWORD=null
 docker-compose up -d
 ```
 
+IMORTANT NOTE!
+
+If you are logged in as the **root** user on your machine, you must make sure that the user in the container is the owner of the files:
+
+```bash
+docker-compose exec -it app bash
+
+# If the command above cannot log you into the container:
+# `docker ps`, and identify the mixpost container name
+# docker exec -it {mixpost_container_name} bash
+
+chown -R mixpost:mixpost /var/www/html
+
+exit
+```
+
 ### 2. Make the binary `mixpost` file executable:
 ```bash
 chmod +x ./docker/mixpost
@@ -219,7 +239,17 @@ This binary will help you to avoid the long command `docker-compose exec -it -u 
 ./docker/mixpost php artisan mixpost:setup-gitignore
 ./docker/mixpost php artisan queue:batches-table
 ./docker/mixpost php artisan storage:link
+./docker/mixpost php artisan queue:restart
 ```
+
+If you are reading for production, you cache the config and routes:
+
+```bash
+./docker/mixpost php artisan config:cache
+./docker/mixpost php artisan route:cache
+```
+
+Do not forget to restart the queue after caching: `./docker/mixpost php artisan queue:restart`
 
 ### 4. And then you can migrate all tables:
 
