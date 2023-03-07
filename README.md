@@ -209,6 +209,22 @@ REDIS_PASSWORD=null
 docker-compose up -d
 ```
 
+IMORTANT NOTE!
+
+If you are logged in as the **root** user on your machine, you must make sure that the user in the container is the owner of the files:
+
+```bash
+docker-compose exec -it app bash
+
+# If the command above cannot log you into the container:
+# `docker ps`, and identify the mixpost container name
+# docker exec -it {mixpost_container_name} bash
+
+chown -R mixpost:mixpost /var/www/html
+
+exit
+```
+
 ### 2. Make the binary `mixpost` file executable:
 ```bash
 chmod +x ./docker/mixpost

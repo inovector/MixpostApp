@@ -69,8 +69,7 @@ else \
     sed -i "s/user = www-data/user = mixpost/g" /etc/php/8.2/fpm/pool.d/www.conf && \
     sed -i "s/group = www-data/group = mixpost/g" /etc/php/8.2/fpm/pool.d/www.conf && \
     mkdir -p /home/mixpost/.composer && \
-    chown -R mixpost:mixpost /home/mixpost && \
-    chown -R mixpost:mixpost /var/www/html; \
+    chown -R mixpost:mixpost /home/mixpost;\
 fi
 
 EXPOSE 80
