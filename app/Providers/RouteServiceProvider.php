@@ -7,6 +7,8 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -26,6 +28,8 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
+        $this->configureUrlSchema();
+
         $this->routes(function () {
             Route::middleware('api')
                 ->prefix('api')
@@ -34,6 +38,19 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+    }
+
+    protected function configureUrlSchema():void
+    {
+        $appUrl = config("app.url");
+
+        if (!empty($appUrl)) {
+            $schema = Str::before($appUrl, ':');
+
+            if(in_array($schema, ['http','https'])) {
+                URL::forceScheme($schema);
+            }
+        }
     }
 
     /**
