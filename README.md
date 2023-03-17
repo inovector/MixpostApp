@@ -173,17 +173,16 @@ Then: `sudo systemctl restart httpd`
 
 **We provide you two methods of installing the Mixpost using Docker:**
 
- - Pull Docker image with all configurations.
- - Build Docker image and have full control.
+ - Pull Docker image.
+ - Build Docker image on your machine and have full control.
 
-## Pull Docker image with all configurations
-This is the most suitable method. You can use [Portainer](https://www.portainer.io/) to install Mixpost Lite.
+## Pull Docker image
+This is the most suitable method, see image on [docker hub](https://hub.docker.com/r/inovector/mixpost), there are also the installation instructions. You can use [Portainer](https://www.portainer.io/) to install Mixpost Lite or simply by creating a `docker-composer.yml` file.
 
-See image on [docker hub](https://hub.docker.com/r/inovector/mixpost). There are also the installation instructions.
+## Build Docker Image on your machine
+You can build a docker image that will have all server configurations and start the containers.
 
-
-## Build Docker Image
-You can create a docker image that will have all server configurations and start the containers.
+This method is mostly for developers. If you decide to install Mixpost using this method, it means that you know what you are doing.
 
 Download the latest version of Mixpost Lite from [here](https://github.com/inovector/MixpostApp/releases), copy .env.example to `.env`, and fill in all the necessary values:
 ```env
