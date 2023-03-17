@@ -4,6 +4,7 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/mixpost-media
 /vendor
 .env
 .env.backup
