@@ -50,6 +50,10 @@ class RouteServiceProvider extends ServiceProvider
             if(in_array($schema, ['http','https'])) {
                 URL::forceScheme($schema);
             }
+            
+            if($schema === 'https') {
+                $this->app['request']->server->set('HTTPS', true);
+            }
         }
     }
 
