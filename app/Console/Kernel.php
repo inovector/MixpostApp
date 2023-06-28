@@ -17,6 +17,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('mixpost:import-account-audience')->everyThreeHours();
         $schedule->command('mixpost:process-metrics')->everyThreeHours();
         $schedule->command('mixpost:delete-old-data')->daily();
+
+        $schedule->command('horizon:snapshot')->everyFiveMinutes();
+        $schedule->command('queue:prune-batches')->daily();
     }
 
     /**
