@@ -21,7 +21,6 @@ class Publish extends Command
             'mixpost:publish-assets --force=true',
             'vendor:publish --tag=mixpost-migrations',
             'vendor:publish --tag=mixpost-auth-assets',
-            'horizon:publish',
         ];
 
         collect($commands)->each(function (string $command) {
