@@ -12,14 +12,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('mixpost:run-scheduled-posts')->everyMinute();
-        $schedule->command('mixpost:import-account-data')->everyTwoHours();
-        $schedule->command('mixpost:import-account-audience')->everyThreeHours();
-        $schedule->command('mixpost:process-metrics')->everyThreeHours();
-        $schedule->command('mixpost:delete-old-data')->daily();
+        \Inovector\Mixpost\Schedule::register($schedule);
 
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
         $schedule->command('queue:prune-batches')->daily();
+        $schedule->command('queue:prune-failed')->daily();
     }
 
     /**
