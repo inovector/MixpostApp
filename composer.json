@@ -6,8 +6,8 @@
     "require": {
         "php": "^8.2",
         "guzzlehttp/guzzle": "^7.2",
-        "inovector/mixpost": "dev-v2-next",
-        "inovector/mixpost-auth": "dev-v2-next",
+        "inovector/mixpost": "^2.0",
+        "inovector/mixpost-auth": "^2.0",
         "laravel/framework": "^11.0",
         "laravel/horizon": "^5.15",
         "laravel/tinker": "^2.8",
