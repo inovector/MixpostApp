@@ -4,6 +4,11 @@
 
 # Welcome to Mixpost
 
+> [!NOTE]
+> This repository only contains standalone Mixpost.
+> If you're looking for the **Mixpost package**, please refer to the <a href="https://github.com/inovector/mixpost">inovector/mixpost</a> repository.
+
+
 Mixpost it's the coolest Self-hosted social media management software. 
 
 This package is the Lite version of Mixpost Pro.
