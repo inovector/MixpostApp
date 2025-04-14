@@ -8,7 +8,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "inovector/mixpost": "^2.0",
         "inovector/mixpost-auth": "^2.0",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^12.0",
         "laravel/horizon": "^5.15",
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.0",
@@ -18,7 +18,7 @@
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^8.1",
-        "phpunit/phpunit": "^10.1",
+        "phpunit/phpunit": "^11.1",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
